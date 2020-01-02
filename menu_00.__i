@@ -1,0 +1,1 @@
+"src\menu_00.c" BROWSE INCDIR(.\src;.\src\os) DEBUG OBJECTEXTEND PRINT(.\menu_00.lst) OBJECT(menu_00.obj)

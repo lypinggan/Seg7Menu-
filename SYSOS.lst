@@ -1,0 +1,66 @@
+C51 COMPILER V9.01   SYSOS                                                                 04/15/2014 19:40:10 PAGE 1   
+
+
+C51 COMPILER V9.01, COMPILATION OF MODULE SYSOS
+OBJECT MODULE PLACED IN SYSOS.obj
+COMPILER INVOKED BY: E:\Program Files\Keil4\C51\BIN\C51.EXE src\os\SYSOS.c BROWSE INCDIR(.\src;.\src\os) DEBUG OBJECTEXT
+                    -END PRINT(.\SYSOS.lst) OBJECT(SYSOS.obj)
+
+line level    source
+
+   1          /***********************************************************************************************
+   2          文件名  SYSOS.c
+   3          日期    2013.8.6
+   4          作者    张诗星  陈东辉
+   5          文件说明        协作式任务实现文件
+   6          修订说明:
+   7          
+   8          2013.08.06  张诗星 初始版本
+   9          ***********************************************************************************************/
+  10          
+  11          /*头文件--------------------------------------------------------------------------------------*/
+  12          //#include ""
+  13          #include "SYSOS.h"
+  14          
+  15          /*全局变量------------------------------------------------------------------------------------*/
+  16          
+  17          OS_CTaskMask taskMask;
+  18          
+  19          #if OS_01_STATITASK==1                  /*使能空闲任务*/
+              unsigned long OS_IdleCtr;               /*空闲任务计数变量*/
+              unsigned long OS_IdleCtrMax;    /*空闲任务计数全速运行最大值*/
+              unsigned char OS_CPUPerc;               /*CPU使用百分比*/
+              
+              /*函数定义------------------------------------------------------------------------------------*/
+              //空闲任务
+              void OS_IdleTask(void)
+              {
+                      ++OS_IdleCtr;
+              }
+              //统计任务 每秒调用一次
+              void OS_StatisTask(void)
+              {
+                      OS_CPUPerc = 100-(unsigned char)((OS_IdleCtr*100)/OS_IdleCtrMax);/*计算CPU使用率*/
+                      OS_IdleCtr=0;                                                                   /*复位计数器*/
+              }
+              //空闲时统计空闲任务调用速率函数
+              void OS_StatisIdle(void)
+              {
+                      OS_IdleCtr=0;
+                      OS_CPUPerc=0;
+              }
+              #endif
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =   ----    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =      1    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

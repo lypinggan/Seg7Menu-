@@ -1,0 +1,12 @@
+"STARTUP.obj",
+"main.obj",
+"key.obj",
+"Menu.obj",
+"menu_00.obj",
+"menu_01.obj",
+"menu_02.obj",
+"menu_03.obj",
+"Message.obj",
+"SegDynamicScan.obj",
+"SYSOS.obj" 
+TO "seg7menu" 

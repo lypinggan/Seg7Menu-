@@ -1,0 +1,845 @@
+BL51 BANKED LINKER/LOCATER V6.22                                                        04/15/2014  19:47:49  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
+E:\PROGRAM FILES\KEIL4\C51\BIN\BL51.EXE STARTUP.obj, main.obj, key.obj, Menu.obj, menu_00.obj, menu_01.obj, menu_02.obj,
+>>  menu_03.obj, Message.obj, SegDynamicScan.obj, SYSOS.obj TO seg7menu
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  STARTUP.obj (?C_STARTUP)
+  main.obj (MAIN)
+  key.obj (KEY)
+  Menu.obj (MENU)
+  menu_00.obj (MENU_00)
+  menu_01.obj (MENU_01)
+  menu_02.obj (MENU_02)
+  menu_03.obj (MENU_03)
+  Message.obj (MESSAGE)
+  SegDynamicScan.obj (SEGDYNAMICSCAN)
+  SYSOS.obj (SYSOS)
+  E:\PROGRAM FILES\KEIL4\C51\LIB\C51S.LIB (?C_INIT)
+  E:\PROGRAM FILES\KEIL4\C51\LIB\C51S.LIB (?C?CLDPTR)
+  E:\PROGRAM FILES\KEIL4\C51\LIB\C51S.LIB (?C?CLDOPTR)
+  E:\PROGRAM FILES\KEIL4\C51\LIB\C51S.LIB (?C?CSTPTR)
+  E:\PROGRAM FILES\KEIL4\C51\LIB\C51S.LIB (?C?UIDIV)
+  E:\PROGRAM FILES\KEIL4\C51\LIB\C51S.LIB (?C?ILDPTR)
+  E:\PROGRAM FILES\KEIL4\C51\LIB\C51S.LIB (?C?ILDOPTR)
+  E:\PROGRAM FILES\KEIL4\C51\LIB\C51S.LIB (?C?ISTPTR)
+  E:\PROGRAM FILES\KEIL4\C51\LIB\C51S.LIB (?C?PLDOPTR)
+  E:\PROGRAM FILES\KEIL4\C51\LIB\C51S.LIB (?C?ICALL)
+  E:\PROGRAM FILES\KEIL4\C51\LIB\C51S.LIB (?C?PLDIDATA)
+  E:\PROGRAM FILES\KEIL4\C51\LIB\C51S.LIB (?C?PLDXDATA)
+  E:\PROGRAM FILES\KEIL4\C51\LIB\C51S.LIB (?C?PLDPDATA)
+  E:\PROGRAM FILES\KEIL4\C51\LIB\C51S.LIB (?C?PLDCODE)
+
+
+LINK MAP OF MODULE:  seg7menu (?C_STARTUP)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     0017H     UNIT         ?DT?MAIN
+            DATA    001FH     000EH     UNIT         ?DT?MENU
+            DATA    002DH     0009H     UNIT         ?DT?SEGDYNAMICSCAN
+            DATA    0036H     0009H     UNIT         _DATA_GROUP_
+            DATA    003FH     0007H     UNIT         ?DT?MESSAGE
+            DATA    0046H     0003H     UNIT         ?DT?KEY
+            DATA    0049H     0001H     UNIT         ?DT?SYSOS
+            IDATA   004AH     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+            CODE    0003H     0007H     UNIT         ?PR?CMENU_CURSORTURNON?MENU
+            CODE    000AH     0001H     UNIT         ?PR?CMENU_START?MAIN
+            CODE    000BH     0003H     ABSOLUTE     
+BL51 BANKED LINKER/LOCATER V6.22                                                      04/15/2014  19:47:49  PAGE 2
+
+
+            CODE    000EH     018CH     UNIT         ?C?LIB_CODE
+            CODE    019AH     0155H     UNIT         ?PR?CVALUEMENU_PROC?MENU_03
+            CODE    02EFH     009DH     UNIT         ?PR?MAIN?MAIN
+            CODE    038CH     0096H     UNIT         ?CO?MAIN
+            CODE    0422H     008CH     UNIT         ?C_C51STARTUP
+            CODE    04AEH     0083H     UNIT         ?PR?_CMENU_DRAWMENUVALUE?MENU
+            CODE    0531H     0078H     UNIT         ?PR?CMENUOBJECT_PROC?MENU_03
+            CODE    05A9H     0047H     UNIT         ?PR?CKEY_PUSHKEY?KEY
+            CODE    05F0H     0040H     UNIT         ?PR?CMENU_SETVALUELIMIT?MENU
+            CODE    0630H     0039H     UNIT         ?PR?_CMENU_KEYEVENT?MENU
+            CODE    0669H     002DH     UNIT         ?PR?_CMENU_MENUINIT?MENU
+            CODE    0696H     0028H     UNIT         ?PR?SEGDYNAMICSCAN?SEGDYNAMICSCAN
+            CODE    06BEH     0026H     UNIT         ?PR?CVALUEOBJECT_PROC?MENU_03
+            CODE    06E4H     0024H     UNIT         ?PR?_CMSGPR_SENDMESSAGE?MESSAGE
+            CODE    0708H     001EH     UNIT         ?PR?CKEY_PULLKEY?KEY
+            CODE    0726H     001CH     UNIT         ?PR?CMENU_DRAWMENUTEXT?MENU
+            CODE    0742H     0015H     UNIT         ?PR?INTERRUPT_TIME0_HANDLE?MAIN
+            CODE    0757H     0012H     UNIT         ?PR?SYSTEMINIT?MAIN
+            CODE    0769H     0010H     UNIT         ?PR?CMENU_CURSOREVENT?MENU
+            CODE    0779H     000DH     UNIT         ?PR?_CMENU_SETFOCUS?MENU
+            CODE    0786H     000DH     UNIT         ?PR?CMSGPR_ENDMESSAGE?MESSAGE
+            CODE    0793H     000CH     UNIT         ?PR?_CMSGPR_POLLMESSAGE?MESSAGE
+            CODE    079FH     000AH     UNIT         ?CO?MENU
+            CODE    07A9H     000AH     UNIT         ?CO?SEGDYNAMICSCAN
+            CODE    07B3H     0009H     UNIT         ?PR?CMENU_QUIT?MAIN
+            CODE    07BCH     0009H     UNIT         ?PR?_CMSGPR_PARENTMESSAGE?MESSAGE
+            CODE    07C5H     0006H     UNIT         ?PR?CMSGPR_GETMESSAGE?MESSAGE
+            CODE    07CBH     0004H     UNIT         ?C_INITSEG
+
+
+
+OVERLAY MAP OF MODULE:   seg7menu (?C_STARTUP)
+
+
+SEGMENT                                     DATA_GROUP 
+  +--> CALLED SEGMENT                     START    LENGTH
+---------------------------------------------------------
+?C_C51STARTUP                             -----    -----
+  +--> ?PR?MAIN?MAIN
+  +--> ?C_INITSEG
+
+?PR?MAIN?MAIN                             -----    -----
+  +--> ?PR?SYSTEMINIT?MAIN
+  +--> ?CO?MAIN
+  +--> ?PR?_CMENU_MENUINIT?MENU
+  +--> ?PR?SEGDYNAMICSCAN?SEGDYNAMICSCAN
+  +--> ?PR?_CMENU_KEYEVENT?MENU
+  +--> ?PR?CMENU_CURSOREVENT?MENU
+
+?CO?MAIN                                  -----    -----
+  +--> ?PR?CVALUEMENU_PROC?MENU_03
+
+?PR?CVALUEMENU_PROC?MENU_03               0036H    0001H
+  +--> ?PR?CMSGPR_GETMESSAGE?MESSAGE
+  +--> ?PR?CMENU_SETVALUELIMIT?MENU
+  +--> ?PR?CVALUEOBJECT_PROC?MENU_03
+  +--> ?PR?CMENU_DRAWMENUTEXT?MENU
+BL51 BANKED LINKER/LOCATER V6.22                                                      04/15/2014  19:47:49  PAGE 3
+
+
+  +--> ?PR?_CMENU_DRAWMENUVALUE?MENU
+  +--> ?CO?MENU
+  +--> ?PR?_CMSGPR_POLLMESSAGE?MESSAGE
+  +--> ?PR?_CMSGPR_PARENTMESSAGE?MESSAGE
+
+?PR?CVALUEOBJECT_PROC?MENU_03             -----    -----
+  +--> ?PR?CMSGPR_GETMESSAGE?MESSAGE
+  +--> ?PR?_CMSGPR_POLLMESSAGE?MESSAGE
+  +--> ?PR?CMENU_CURSORTURNON?MENU
+  +--> ?PR?CMENUOBJECT_PROC?MENU_03
+  +--> ?PR?_CMENU_SETFOCUS?MENU
+  +--> ?PR?CMSGPR_ENDMESSAGE?MESSAGE
+
+?PR?CMENUOBJECT_PROC?MENU_03              -----    -----
+  +--> ?PR?CMSGPR_GETMESSAGE?MESSAGE
+  +--> ?PR?CMENU_QUIT?MAIN
+  +--> ?PR?_CMENU_SETFOCUS?MENU
+  +--> ?PR?_CMSGPR_POLLMESSAGE?MESSAGE
+  +--> ?PR?CMSGPR_ENDMESSAGE?MESSAGE
+
+?PR?CMENU_QUIT?MAIN                       -----    -----
+  +--> ?PR?_CMENU_MENUINIT?MENU
+
+?PR?_CMENU_MENUINIT?MENU                  -----    -----
+  +--> ?PR?_CMENU_SETFOCUS?MENU
+  +--> ?PR?_CMSGPR_SENDMESSAGE?MESSAGE
+  +--> ?PR?CMSGPR_ENDMESSAGE?MESSAGE
+  +--> ?PR?CMENU_START?MAIN
+
+?PR?_CMENU_DRAWMENUVALUE?MENU             0037H    0008H
+  +--> ?CO?SEGDYNAMICSCAN
+
+?PR?_CMENU_KEYEVENT?MENU                  0036H    0001H
+  +--> ?PR?CKEY_PULLKEY?KEY
+  +--> ?PR?CKEY_PUSHKEY?KEY
+  +--> ?PR?_CMSGPR_SENDMESSAGE?MESSAGE
+
+?PR?CMENU_CURSOREVENT?MENU                -----    -----
+  +--> ?PR?_CMSGPR_SENDMESSAGE?MESSAGE
+
+
+
+SYMBOL TABLE OF MODULE:  seg7menu (?C_STARTUP)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        ?C_STARTUP
+  C:0422H         SEGMENT       ?C_C51STARTUP
+  I:004AH         SEGMENT       ?STACK
+  C:0000H         PUBLIC        ?C_STARTUP
+  D:00E0H         SYMBOL        ACC
+  D:00F0H         SYMBOL        B
+  D:0083H         SYMBOL        DPH
+  D:0082H         SYMBOL        DPL
+  N:0000H         SYMBOL        IBPSTACK
+  N:0100H         SYMBOL        IBPSTACKTOP
+BL51 BANKED LINKER/LOCATER V6.22                                                      04/15/2014  19:47:49  PAGE 4
+
+
+  N:0080H         SYMBOL        IDATALEN
+  C:0425H         SYMBOL        IDATALOOP
+  N:0000H         SYMBOL        PBPSTACK
+  N:0100H         SYMBOL        PBPSTACKTOP
+  N:0000H         SYMBOL        PDATALEN
+  N:0000H         SYMBOL        PDATASTART
+  N:0000H         SYMBOL        PPAGE
+  N:0000H         SYMBOL        PPAGEENABLE
+  D:00A0H         SYMBOL        PPAGE_SFR
+  D:0081H         SYMBOL        SP
+  C:0422H         SYMBOL        STARTUP1
+  N:0000H         SYMBOL        XBPSTACK
+  N:0000H         SYMBOL        XBPSTACKTOP
+  N:0000H         SYMBOL        XDATALEN
+  N:0000H         SYMBOL        XDATASTART
+  C:0000H         LINE#         126
+  C:0422H         LINE#         133
+  C:0424H         LINE#         134
+  C:0425H         LINE#         135
+  C:0426H         LINE#         136
+  C:0428H         LINE#         185
+  C:042BH         LINE#         196
+  -------         ENDMOD        ?C_STARTUP
+
+  -------         MODULE        MAIN
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0080H         PUBLIC        P0
+  D:0090H         PUBLIC        P1
+  D:00A0H         PUBLIC        P2
+  D:00B0H         PUBLIC        P3
+  B:00A8H.7       PUBLIC        EA
+  C:0742H         PUBLIC        interrupt_time0_handle
+  D:0008H         PUBLIC        aKey
+  D:00A8H         PUBLIC        IE
+  B:00A0H.0       PUBLIC        P2_0
+  B:00A0H.1       PUBLIC        P2_1
+  B:00A0H.2       PUBLIC        P2_2
+  B:00A0H.3       PUBLIC        P2_3
+  B:00A0H.4       PUBLIC        P2_4
+  D:00B8H         PUBLIC        IP
+  C:02EFH         PUBLIC        main
+  D:0009H         PUBLIC        cursorTimer
+  D:0098H         PUBLIC        SCON
+  D:0089H         PUBLIC        TMOD
+  D:0088H         PUBLIC        TCON
+  C:0757H         PUBLIC        systemInit
+  B:00A8H.1       PUBLIC        ET0
+  C:000AH         PUBLIC        CMenu_Start
+  D:008CH         PUBLIC        TH0
+  D:000AH         PUBLIC        keyTimer
+  D:008AH         PUBLIC        TL0
+  C:038CH         PUBLIC        menuList
+  B:0088H.4       PUBLIC        TR0
+  C:07B3H         PUBLIC        CMenu_Quit
+  D:00C8H         PUBLIC        T2CON
+  D:000BH         PUBLIC        config
+  D:00D0H         PUBLIC        PSW
+BL51 BANKED LINKER/LOCATER V6.22                                                      04/15/2014  19:47:49  PAGE 5
+
+
+  -------         PROC          SYSTEMINIT
+  C:0757H         LINE#         41
+  C:0757H         LINE#         42
+  C:0757H         LINE#         45
+  C:075AH         LINE#         46
+  C:075CH         LINE#         47
+  C:075FH         LINE#         48
+  C:0762H         LINE#         49
+  C:0764H         LINE#         50
+  C:0766H         LINE#         52
+  C:0768H         LINE#         53
+  -------         ENDPROC       SYSTEMINIT
+  -------         PROC          MAIN
+  C:02EFH         LINE#         54
+  C:02EFH         LINE#         55
+  C:02EFH         LINE#         57
+  C:02F2H         LINE#         58
+  C:02FBH         LINE#         60
+  C:02FBH         LINE#         61
+  C:02FBH         LINE#         62
+  C:0307H         LINE#         63
+  C:0307H         LINE#         65
+  C:030AH         LINE#         67
+  C:0313H         LINE#         68
+  C:0313H         LINE#         69
+  C:0316H         LINE#         70
+  C:031CH         LINE#         71
+  C:031CH         LINE#         72
+  C:0325H         LINE#         73
+  C:0325H         LINE#         74
+  C:0328H         LINE#         75
+  C:032EH         LINE#         76
+  C:032EH         LINE#         77
+  C:032EH         LINE#         78
+  C:0330H         LINE#         80
+  C:033FH         LINE#         81
+  C:033FH         LINE#         82
+  C:0342H         LINE#         84
+  C:034AH         LINE#         85
+  C:0352H         LINE#         86
+  C:035AH         LINE#         87
+  C:0362H         LINE#         88
+  C:036AH         LINE#         89
+  C:036DH         LINE#         91
+  C:0372H         LINE#         92
+  C:0372H         LINE#         93
+  C:0374H         LINE#         95
+  C:0386H         LINE#         96
+  C:0386H         LINE#         97
+  C:0389H         LINE#         98
+  C:0389H         LINE#         99
+  -------         ENDPROC       MAIN
+  -------         PROC          INTERRUPT_TIME0_HANDLE
+  C:0742H         LINE#         104
+  C:0744H         LINE#         106
+  C:0746H         LINE#         107
+  C:0749H         LINE#         108
+BL51 BANKED LINKER/LOCATER V6.22                                                      04/15/2014  19:47:49  PAGE 6
+
+
+  C:074CH         LINE#         109
+  C:074EH         LINE#         110
+  C:0754H         LINE#         111
+  -------         ENDPROC       INTERRUPT_TIME0_HANDLE
+  -------         PROC          CMENU_START
+  C:000AH         LINE#         113
+  C:000AH         LINE#         114
+  C:000AH         LINE#         115
+  -------         ENDPROC       CMENU_START
+  -------         PROC          CMENU_QUIT
+  C:07B3H         LINE#         117
+  C:07B3H         LINE#         118
+  C:07B3H         LINE#         119
+  -------         ENDPROC       CMENU_QUIT
+  -------         ENDMOD        MAIN
+
+  -------         MODULE        KEY
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  C:0708H         PUBLIC        CKey_PullKey
+  C:05A9H         PUBLIC        CKey_PushKey
+  D:0046H         PUBLIC        keyInput
+  -------         PROC          CKEY_PUSHKEY
+  C:05A9H         LINE#         22
+  C:05A9H         LINE#         23
+  C:05A9H         LINE#         25
+  C:05BEH         LINE#         26
+  C:05BEH         LINE#         28
+  C:05BEH         LINE#         29
+  C:05BEH         LINE#         30
+  C:05C1H         LINE#         31
+  C:05C3H         LINE#         33
+  C:05C3H         LINE#         34
+  C:05C6H         LINE#         35
+  C:05C8H         LINE#         37
+  C:05C8H         LINE#         38
+  C:05CBH         LINE#         39
+  C:05D1H         LINE#         40
+  C:05D3H         LINE#         42
+  C:05D3H         LINE#         43
+  C:05D9H         LINE#         44
+  C:05DCH         LINE#         45
+  C:05DEH         LINE#         47
+  C:05DEH         LINE#         48
+  C:05DEH         LINE#         49
+  C:05DEH         LINE#         50
+  C:05E1H         LINE#         51
+  C:05E1H         LINE#         52
+  C:05E1H         LINE#         55
+  C:05EFH         LINE#         56
+  -------         ENDPROC       CKEY_PUSHKEY
+  -------         PROC          CKEY_PULLKEY
+  C:0708H         LINE#         58
+  C:0708H         LINE#         59
+  C:0708H         LINE#         60
+  C:070FH         LINE#         61
+  C:070FH         LINE#         63
+  C:070FH         LINE#         64
+BL51 BANKED LINKER/LOCATER V6.22                                                      04/15/2014  19:47:49  PAGE 7
+
+
+  C:0712H         LINE#         65
+  C:0714H         LINE#         67
+  C:0714H         LINE#         68
+  C:0714H         LINE#         69
+  C:0714H         LINE#         70
+  C:0717H         LINE#         71
+  C:0717H         LINE#         72
+  C:0717H         LINE#         74
+  C:0725H         LINE#         75
+  -------         ENDPROC       CKEY_PULLKEY
+  -------         ENDMOD        KEY
+
+  -------         MODULE        MENU
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0080H         PUBLIC        P0
+  D:0090H         PUBLIC        P1
+  D:00A0H         PUBLIC        P2
+  D:00B0H         PUBLIC        P3
+  C:0726H         PUBLIC        CMenu_DrawMenuText
+  D:00A8H         PUBLIC        IE
+  C:079FH         PUBLIC        CursorIncr
+  D:00B8H         PUBLIC        IP
+  C:0003H         PUBLIC        CMenu_CursorTurnOn
+  D:0098H         PUBLIC        SCON
+  D:0088H         PUBLIC        TCON
+  D:001FH         PUBLIC        menuDC
+  C:0769H         PUBLIC        CMenu_CursorEvent
+  C:04AEH         PUBLIC        _CMenu_DrawMenuValue
+  D:00C8H         PUBLIC        T2CON
+  C:0669H         PUBLIC        _CMenu_MenuInit
+  C:0630H         PUBLIC        _CMenu_KeyEvent
+  C:05F0H         PUBLIC        CMenu_SetValueLimit
+  C:0779H         PUBLIC        _CMenu_SetFocus
+  D:00D0H         PUBLIC        PSW
+  -------         PROC          _CMENU_MENUINIT
+  D:0001H         SYMBOL        pRootMenu
+  C:0669H         LINE#         29
+  C:0669H         LINE#         30
+  C:0669H         LINE#         32
+  C:066CH         LINE#         33
+  C:0672H         LINE#         34
+  C:0678H         LINE#         37
+  C:067AH         LINE#         38
+  C:067CH         LINE#         41
+  C:0685H         LINE#         42
+  C:0690H         LINE#         43
+  C:0693H         LINE#         46
+  -------         ENDPROC       _CMENU_MENUINIT
+  -------         PROC          CMENU_SETVALUELIMIT
+  -------         DO            
+  D:0006H         SYMBOL        max
+  D:0004H         SYMBOL        min
+  -------         ENDDO         
+  C:05F0H         LINE#         49
+  C:05F0H         LINE#         50
+  C:05F0H         LINE#         54
+  C:05FFH         LINE#         55
+BL51 BANKED LINKER/LOCATER V6.22                                                      04/15/2014  19:47:49  PAGE 8
+
+
+  C:0608H         LINE#         58
+  C:061CH         LINE#         59
+  C:062FH         LINE#         60
+  -------         ENDPROC       CMENU_SETVALUELIMIT
+  -------         PROC          _CMENU_SETFOCUS
+  D:0001H         SYMBOL        aFocus
+  C:0779H         LINE#         62
+  C:0779H         LINE#         63
+  C:0779H         LINE#         64
+  C:077FH         LINE#         65
+  C:0785H         LINE#         66
+  -------         ENDPROC       _CMENU_SETFOCUS
+  -------         PROC          CMENU_CURSORTURNON
+  C:0003H         LINE#         71
+  C:0003H         LINE#         72
+  C:0003H         LINE#         73
+  C:0006H         LINE#         74
+  C:0009H         LINE#         75
+  -------         ENDPROC       CMENU_CURSORTURNON
+  -------         PROC          _CMENU_KEYEVENT
+  D:0036H         SYMBOL        aKey
+  C:0630H         LINE#         79
+  C:0632H         LINE#         80
+  C:0632H         LINE#         82
+  C:063BH         LINE#         83
+  C:063EH         LINE#         86
+  C:0643H         LINE#         87
+  C:0643H         LINE#         88
+  C:064EH         LINE#         89
+  C:0651H         LINE#         90
+  C:0652H         LINE#         91
+  C:065DH         LINE#         93
+  C:0668H         LINE#         94
+  -------         ENDPROC       _CMENU_KEYEVENT
+  -------         PROC          CMENU_DRAWMENUTEXT
+  -------         DO            
+  D:0007H         SYMBOL        i
+  -------         ENDDO         
+  C:0726H         LINE#         96
+  C:0726H         LINE#         97
+  C:0726H         LINE#         100
+  C:0728H         LINE#         101
+  C:0741H         LINE#         102
+  -------         ENDPROC       CMENU_DRAWMENUTEXT
+  -------         PROC          _CMENU_DRAWMENUVALUE
+  D:0037H         SYMBOL        x
+  D:0038H         SYMBOL        width
+  D:0002H         SYMBOL        value
+  -------         DO            
+  D:0039H         SYMBOL        strTemp
+  D:003EH         SYMBOL        i
+  -------         ENDDO         
+  C:04AEH         LINE#         104
+  C:04B2H         LINE#         105
+  C:04B2H         LINE#         108
+  C:04B5H         LINE#         109
+  C:04B5H         LINE#         110
+BL51 BANKED LINKER/LOCATER V6.22                                                      04/15/2014  19:47:49  PAGE 9
+
+
+  C:04D7H         LINE#         111
+  C:04E6H         LINE#         112
+  C:04EDH         LINE#         114
+  C:04F0H         LINE#         115
+  C:04F0H         LINE#         116
+  C:04FCH         LINE#         117
+  C:04FCH         LINE#         119
+  C:0505H         LINE#         120
+  C:0507H         LINE#         122
+  C:0507H         LINE#         123
+  C:050EH         LINE#         125
+  C:0511H         LINE#         126
+  C:0530H         LINE#         127
+  -------         ENDPROC       _CMENU_DRAWMENUVALUE
+  -------         PROC          CMENU_CURSOREVENT
+  C:0769H         LINE#         131
+  C:0769H         LINE#         132
+  C:0769H         LINE#         134
+  C:076DH         LINE#         137
+  C:0778H         LINE#         138
+  -------         ENDPROC       CMENU_CURSOREVENT
+  -------         ENDMOD        MENU
+
+  -------         MODULE        MENU_00
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0080H         PUBLIC        P0
+  D:0090H         PUBLIC        P1
+  D:00A0H         PUBLIC        P2
+  D:00B0H         PUBLIC        P3
+  D:00A8H         PUBLIC        IE
+  D:00B8H         PUBLIC        IP
+  D:0098H         PUBLIC        SCON
+  D:0088H         PUBLIC        TCON
+  D:00C8H         PUBLIC        T2CON
+  D:00D0H         PUBLIC        PSW
+  -------         ENDMOD        MENU_00
+
+  -------         MODULE        MENU_01
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0080H         PUBLIC        P0
+  D:0090H         PUBLIC        P1
+  D:00A0H         PUBLIC        P2
+  D:00B0H         PUBLIC        P3
+  D:00A8H         PUBLIC        IE
+  D:00B8H         PUBLIC        IP
+  D:0098H         PUBLIC        SCON
+  D:0088H         PUBLIC        TCON
+  D:00C8H         PUBLIC        T2CON
+  D:00D0H         PUBLIC        PSW
+  -------         ENDMOD        MENU_01
+
+  -------         MODULE        MENU_02
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0080H         PUBLIC        P0
+  D:0090H         PUBLIC        P1
+  D:00A0H         PUBLIC        P2
+  D:00B0H         PUBLIC        P3
+BL51 BANKED LINKER/LOCATER V6.22                                                      04/15/2014  19:47:49  PAGE 10
+
+
+  D:00A8H         PUBLIC        IE
+  D:00B8H         PUBLIC        IP
+  D:0098H         PUBLIC        SCON
+  D:0088H         PUBLIC        TCON
+  D:00C8H         PUBLIC        T2CON
+  D:00D0H         PUBLIC        PSW
+  -------         ENDMOD        MENU_02
+
+  -------         MODULE        MENU_03
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0080H         PUBLIC        P0
+  D:0090H         PUBLIC        P1
+  D:00A0H         PUBLIC        P2
+  D:00B0H         PUBLIC        P3
+  D:00A8H         PUBLIC        IE
+  C:06BEH         PUBLIC        CValueObject_Proc
+  D:00B8H         PUBLIC        IP
+  C:0531H         PUBLIC        CMenuObject_Proc
+  D:0098H         PUBLIC        SCON
+  D:0088H         PUBLIC        TCON
+  C:019AH         PUBLIC        CValueMenu_Proc
+  D:00C8H         PUBLIC        T2CON
+  D:00D0H         PUBLIC        PSW
+  -------         PROC          CMENUOBJECT_PROC
+  C:0531H         LINE#         20
+  C:0531H         LINE#         21
+  C:0531H         LINE#         23
+  C:054BH         LINE#         24
+  C:054BH         LINE#         26
+  C:054BH         LINE#         28
+  C:0561H         LINE#         29
+  C:056EH         LINE#         31
+  C:0571H         LINE#         33
+  C:0583H         LINE#         34
+  C:0583H         LINE#         35
+  C:0585H         LINE#         37
+  C:0585H         LINE#         38
+  C:0585H         LINE#         39
+  C:058BH         LINE#         40
+  C:058BH         LINE#         41
+  C:058DH         LINE#         43
+  C:058DH         LINE#         44
+  C:058DH         LINE#         45
+  C:058FH         LINE#         46
+  C:058FH         LINE#         47
+  C:0591H         LINE#         49
+  C:0591H         LINE#         51
+  C:05A0H         LINE#         52
+  C:05A5H         LINE#         53
+  C:05A5H         LINE#         54
+  C:05A5H         LINE#         55
+  C:05A8H         LINE#         56
+  C:05A8H         LINE#         57
+  C:05A8H         LINE#         58
+  -------         ENDPROC       CMENUOBJECT_PROC
+  -------         PROC          CVALUEOBJECT_PROC
+  C:06BEH         LINE#         60
+BL51 BANKED LINKER/LOCATER V6.22                                                      04/15/2014  19:47:49  PAGE 11
+
+
+  C:06BEH         LINE#         61
+  C:06BEH         LINE#         63
+  C:06CAH         LINE#         64
+  C:06CAH         LINE#         65
+  C:06CAH         LINE#         66
+  C:06CFH         LINE#         68
+  C:06D2H         LINE#         70
+  C:06D2H         LINE#         71
+  C:06D2H         LINE#         73
+  C:06DBH         LINE#         74
+  C:06E0H         LINE#         75
+  C:06E0H         LINE#         76
+  C:06E0H         LINE#         77
+  C:06E3H         LINE#         78
+  C:06E3H         LINE#         79
+  C:06E3H         LINE#         80
+  -------         ENDPROC       CVALUEOBJECT_PROC
+  -------         PROC          CVALUEMENU_PROC
+  -------         DO            
+  D:0036H         SYMBOL        amsg
+  -------         ENDDO         
+  C:019AH         LINE#         82
+  C:019AH         LINE#         83
+  C:019AH         LINE#         86
+  C:01CEH         LINE#         87
+  C:01CEH         LINE#         88
+  C:01CEH         LINE#         90
+  C:01DEH         LINE#         91
+  C:01EEH         LINE#         93
+  C:0202H         LINE#         95
+  C:0205H         LINE#         96
+  C:020DH         LINE#         97
+  C:0210H         LINE#         98
+  C:0210H         LINE#         99
+  C:0213H         LINE#         100
+  C:021EH         LINE#         101
+  C:021EH         LINE#         102
+  C:021EH         LINE#         104
+  C:0221H         LINE#         106
+  C:0231H         LINE#         107
+  C:0241H         LINE#         109
+  C:0253H         LINE#         110
+  C:025BH         LINE#         111
+  C:025EH         LINE#         112
+  C:025EH         LINE#         114
+  C:027BH         LINE#         118
+  C:027BH         LINE#         119
+  C:027BH         LINE#         120
+  C:027DH         LINE#         121
+  C:027DH         LINE#         123
+  C:029FH         LINE#         127
+  C:02A2H         LINE#         128
+  C:02A7H         LINE#         129
+  C:02A7H         LINE#         132
+  C:02A7H         LINE#         137
+  C:02B3H         LINE#         139
+  C:02B4H         LINE#         140
+BL51 BANKED LINKER/LOCATER V6.22                                                      04/15/2014  19:47:49  PAGE 12
+
+
+  C:02B4H         LINE#         145
+  C:02BCH         LINE#         146
+  C:02BEH         LINE#         148
+  C:02BFH         LINE#         150
+  C:02BFH         LINE#         151
+  C:02C4H         LINE#         152
+  C:02C4H         LINE#         153
+  C:02D1H         LINE#         154
+  C:02D4H         LINE#         155
+  C:02D5H         LINE#         157
+  C:02D5H         LINE#         158
+  C:02DFH         LINE#         159
+  C:02E2H         LINE#         160
+  C:02E2H         LINE#         161
+  C:02E3H         LINE#         163
+  C:02E3H         LINE#         164
+  C:02EEH         LINE#         165
+  C:02EEH         LINE#         166
+  C:02EEH         LINE#         167
+  -------         ENDPROC       CVALUEMENU_PROC
+  -------         ENDMOD        MENU_03
+
+  -------         MODULE        MESSAGE
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  C:07BCH         PUBLIC        _CMsgPr_ParentMessage
+  D:003FH         PUBLIC        msgDC
+  C:06E4H         PUBLIC        _CMsgPr_SendMessage
+  C:0786H         PUBLIC        CMsgPr_EndMessage
+  C:0793H         PUBLIC        _CMsgPr_PollMessage
+  C:07C5H         PUBLIC        CMsgPr_GetMessage
+  -------         PROC          CMSGPR_GETMESSAGE
+  -------         DO            
+  D:0007H         SYMBOL        amsg
+  -------         ENDDO         
+  C:07C5H         LINE#         22
+  C:07C5H         LINE#         23
+  C:07C5H         LINE#         24
+  C:07C7H         LINE#         25
+  C:07CAH         LINE#         26
+  C:07CAH         LINE#         27
+  -------         ENDPROC       CMSGPR_GETMESSAGE
+  -------         PROC          _CMSGPR_POLLMESSAGE
+  D:0007H         SYMBOL        aMsg
+  C:0793H         LINE#         29
+  C:0793H         LINE#         30
+  C:0793H         LINE#         31
+  C:079CH         LINE#         33
+  C:079EH         LINE#         34
+  -------         ENDPROC       _CMSGPR_POLLMESSAGE
+  -------         PROC          _CMSGPR_SENDMESSAGE
+  D:0001H         SYMBOL        pmsgPrce
+  D:0005H         SYMBOL        aMsg
+  C:06E4H         LINE#         36
+  C:06E4H         LINE#         37
+  C:06E4H         LINE#         38
+  C:06EAH         LINE#         39
+  C:06F0H         LINE#         42
+BL51 BANKED LINKER/LOCATER V6.22                                                      04/15/2014  19:47:49  PAGE 13
+
+
+  C:06F2H         LINE#         44
+  C:06F2H         LINE#         45
+  C:06F2H         LINE#         46
+  C:0702H         LINE#         48
+  C:0702H         LINE#         49
+  C:0705H         LINE#         50
+  C:0707H         LINE#         51
+  -------         ENDPROC       _CMSGPR_SENDMESSAGE
+  -------         PROC          _CMSGPR_PARENTMESSAGE
+  D:0001H         SYMBOL        pmsgPrce
+  D:0005H         SYMBOL        aMsg
+  C:07BCH         LINE#         53
+  C:07BCH         LINE#         54
+  C:07BCH         LINE#         55
+  C:07BEH         LINE#         56
+  C:07C4H         LINE#         57
+  -------         ENDPROC       _CMSGPR_PARENTMESSAGE
+  -------         PROC          CMSGPR_ENDMESSAGE
+  C:0786H         LINE#         59
+  C:0786H         LINE#         60
+  C:0786H         LINE#         61
+  C:078FH         LINE#         62
+  C:0792H         LINE#         63
+  -------         ENDPROC       CMSGPR_ENDMESSAGE
+  -------         ENDMOD        MESSAGE
+
+  -------         MODULE        SEGDYNAMICSCAN
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0080H         PUBLIC        P0
+  D:0090H         PUBLIC        P1
+  D:00A0H         PUBLIC        P2
+  D:00B0H         PUBLIC        P3
+  D:00A8H         PUBLIC        IE
+  D:00B8H         PUBLIC        IP
+  C:07A9H         PUBLIC        SegDigCode
+  D:0098H         PUBLIC        SCON
+  D:0088H         PUBLIC        TCON
+  D:00C8H         PUBLIC        T2CON
+  D:002EH         PUBLIC        segDisBuff
+  C:0696H         PUBLIC        SegDynamicScan
+  D:00D0H         PUBLIC        PSW
+  -------         PROC          SEGDYNAMICSCAN
+  -------         DO            
+  D:002DH         SYMBOL        scanIndex
+  -------         ENDDO         
+  C:0696H         LINE#         27
+  C:0696H         LINE#         28
+  C:0696H         LINE#         32
+  C:0699H         LINE#         34
+  C:06B1H         LINE#         36
+  C:06BAH         LINE#         37
+  C:06BDH         LINE#         38
+  -------         ENDPROC       SEGDYNAMICSCAN
+  -------         ENDMOD        SEGDYNAMICSCAN
+
+  -------         MODULE        SYSOS
+  C:0000H         SYMBOL        _ICE_DUMMY_
+BL51 BANKED LINKER/LOCATER V6.22                                                      04/15/2014  19:47:49  PAGE 14
+
+
+  D:0049H         PUBLIC        taskMask
+  -------         ENDMOD        SYSOS
+
+  -------         MODULE        ?C?CLDPTR
+  C:000EH         PUBLIC        ?C?CLDPTR
+  -------         ENDMOD        ?C?CLDPTR
+
+  -------         MODULE        ?C?CLDOPTR
+  C:0027H         PUBLIC        ?C?CLDOPTR
+  -------         ENDMOD        ?C?CLDOPTR
+
+  -------         MODULE        ?C?CSTPTR
+  C:0054H         PUBLIC        ?C?CSTPTR
+  -------         ENDMOD        ?C?CSTPTR
+
+  -------         MODULE        ?C?UIDIV
+  C:0066H         PUBLIC        ?C?UIDIV
+  -------         ENDMOD        ?C?UIDIV
+
+  -------         MODULE        ?C?ILDPTR
+  C:00BBH         PUBLIC        ?C?ILDPTR
+  -------         ENDMOD        ?C?ILDPTR
+
+  -------         MODULE        ?C?ILDOPTR
+  C:00E6H         PUBLIC        ?C?ILDOPTR
+  -------         ENDMOD        ?C?ILDOPTR
+
+  -------         MODULE        ?C?ISTPTR
+  C:011EH         PUBLIC        ?C?ISTPTR
+  -------         ENDMOD        ?C?ISTPTR
+
+  -------         MODULE        ?C?PLDOPTR
+  C:013DH         PUBLIC        ?C?PLDOPTR
+  -------         ENDMOD        ?C?PLDOPTR
+
+  -------         MODULE        ?C?ICALL
+  C:016DH         PUBLIC        ?C?ICALL
+  C:0171H         PUBLIC        ?C?ICALL2
+  -------         ENDMOD        ?C?ICALL
+
+  -------         MODULE        ?C?PLDIDATA
+  C:0173H         PUBLIC        ?C?PLDIDATA
+  -------         ENDMOD        ?C?PLDIDATA
+
+  -------         MODULE        ?C?PLDXDATA
+  C:017CH         PUBLIC        ?C?PLDXDATA
+  -------         ENDMOD        ?C?PLDXDATA
+
+  -------         MODULE        ?C?PLDPDATA
+  C:0185H         PUBLIC        ?C?PLDPDATA
+  -------         ENDMOD        ?C?PLDPDATA
+
+  -------         MODULE        ?C?PLDCODE
+  C:018EH         PUBLIC        ?C?PLDCODE
+  -------         ENDMOD        ?C?PLDCODE
+
+Program Size: data=75.0 xdata=0 code=1999
+BL51 BANKED LINKER/LOCATER V6.22                                                      04/15/2014  19:47:49  PAGE 15
+
+
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

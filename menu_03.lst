@@ -1,0 +1,199 @@
+C51 COMPILER V9.01   MENU_03                                                               04/15/2014 19:47:48 PAGE 1   
+
+
+C51 COMPILER V9.01, COMPILATION OF MODULE MENU_03
+OBJECT MODULE PLACED IN menu_03.obj
+COMPILER INVOKED BY: E:\Program Files\Keil4\C51\BIN\C51.EXE src\menu_03.c BROWSE INCDIR(.\src;.\src\os) DEBUG OBJECTEXTE
+                    -ND PRINT(.\menu_03.lst) OBJECT(menu_03.obj)
+
+line level    source
+
+   1          /***********************************************************************************************
+   2          文件名  Menu_01.c
+   3          日期    2014.02.28
+   4          作者    张诗星  陈东辉
+   5          文件说明        菜单模式01 单屏浏览模式
+   6          修订说明:
+   7          
+   8          2013.02.16  张诗星 初始版本
+   9          ***********************************************************************************************/
+  10          
+  11          /*头文件--------------------------------------------------------------------------------------*/
+  12          #include "Menu.h"
+  13          //#include ""
+  14          
+  15          #if SMENU_MODE_SETUP==3
+  16          
+  17          /*接口函数------------------------------------------------------------------------------------*/
+  18          
+  19          //菜单管理基类 用于管理菜单跳转
+  20          void CMenuObject_Proc(void)
+  21          {
+  22   1              //消息处理
+  23   1              switch(CMsgPr_GetMessage())     
+  24   1              {
+  25   2                      //初始化消息
+  26   2                      case WM_INIT:
+  27   2                              /*计算当前菜单项指针 以方便访问*/
+  28   2                              menuDC.pMenuItemPtr=menuDC.theMenu.m_pMenuList+menuDC.theMenu.m_menuIndex;
+  29   2                              if (0==CMenu_GetMenuItemPtr()->m_pfun){CMenu_Quit();break;}
+  30   2                              #if SMENU_01_CURSOR==1
+  31   2                              CMenu_CursorTurnOff();                                  /*关闭光标定时器*/
+  32   2                              #endif
+  33   2                              CMsgPr_SetMsgObject(CMenu_GetMenuItemPtr()->m_pfun);
+  34   2                              CMsgPr_PollMessage(WM_INIT);    //向数值控件发送INIT消息
+  35   2                              break;
+  36   2                      //上个菜单项
+  37   2                      case WM_KEY_ADD:
+  38   2                      case WM_MENU_PREV:
+  39   2                              if (menuDC.theMenu.m_menuIndex){--menuDC.theMenu.m_menuIndex;}
+  40   2                              CMsgPr_PollMessage(WM_INIT);    /*投递初始化消息*/
+  41   2                              break;
+  42   2                      //下个菜单项
+  43   2                      case WM_KEY_SUB:
+  44   2                      case WM_MENU_NEXT:      
+  45   2                              ++menuDC.theMenu.m_menuIndex;
+  46   2                              CMsgPr_PollMessage(WM_INIT);            /*投递初始化消息*/
+  47   2                              break;
+  48   2                      //设置键
+  49   2                      case WM_KEY_SET:
+  50   2                              //SET键按下 设置菜单数值调整控件为输入焦点
+  51   2                              CMenu_SetFocus(CMenu_GetMenuItemPtr()->m_pfun);
+  52   2                              CMsgPr_PollMessage(WM_INIT);
+  53   2                              break;
+  54   2                      default:                /*默认消息结束消息传递*/
+C51 COMPILER V9.01   MENU_03                                                               04/15/2014 19:47:48 PAGE 2   
+
+  55   2                              CMsgPr_EndMessage();
+  56   2                              break;
+  57   2              }
+  58   1      }
+  59          //菜单数值基类
+  60          void CValueObject_Proc(void)
+  61          {
+  62   1              //消息处理
+  63   1              switch(CMsgPr_GetMessage())
+  64   1              {
+  65   2                      case WM_INIT:           /*初始化菜单控件消息*/
+  66   2                              CMsgPr_PollMessage(WM_PAINT);           /*投递显示消息*/
+  67   2                              #if SMENU_01_CURSOR==1
+  68   2                              CMenu_CursorTurnOn();                                   /*打开光标定时器*/
+  69   2                              #endif
+  70   2                              break;
+  71   2                      case WM_KEY_SET:        /*设置键消息*/
+  72   2                              //SET键按下 数值调整控件为输入焦点
+  73   2                              CMenu_SetFocus(CMenuObject_Proc);
+  74   2                              CMsgPr_PollMessage(WM_INIT);
+  75   2                              break;
+  76   2                      default:                /*默认消息结束消息传递*/
+  77   2                              CMsgPr_EndMessage();
+  78   2                              break;
+  79   2              }
+  80   1      }
+  81          //数值菜单消息例程
+  82          void CValueMenu_Proc(void)
+  83          {
+  84   1              unsigned char amsg;
+  85   1              //消息处理
+  86   1              switch(amsg=CMsgPr_GetMessage())
+  87   1              {
+  88   2                      case WM_INIT:           /*初始化消息*/
+  89   2                              //读取菜单参数数值
+  90   2                              if (CMenu_GetMenuItemPtr()->attri|MENU_VALUTYPE_U16)    /*双字节*/
+  91   2                                      menuDC.cValue = *(unsigned short*)CMenu_GetMenuItemPtr()->m_pdata;
+  92   2                              else                                                    /*单字节*/
+  93   2                                      menuDC.cValue = *(unsigned char*)CMenu_GetMenuItemPtr()->m_pdata;
+  94   2      
+  95   2                              CMenu_SetValueLimit();  //限幅处理
+  96   2                              CMsgPr_ParentMessage(CValueObject_Proc,WM_INIT);        /*基类初始化消息*/
+  97   2                              break;
+  98   2                      case WM_PAINT:          /*显示消息*/
+  99   2                              CMenu_DrawMenuText();
+ 100   2                              CMenu_DrawMenuValue(SMENU_VALUE_POSIT,VALUE_ZERO_MIN,menuDC.cValue);
+ 101   2                              break;
+ 102   2                      case WM_KEY_SET:        /*设置键消息*/
+ 103   2                              //限幅处理
+ 104   2                              CMenu_SetValueLimit();  //限幅处理
+ 105   2                              //保存菜单参数数值
+ 106   2                              if (CMenu_GetMenuItemPtr()->attri|MENU_VALUTYPE_U16)    /*双字节*/
+ 107   2                                      *(unsigned short*)CMenu_GetMenuItemPtr()->m_pdata = menuDC.cValue;
+ 108   2                              else                                                    /*单字节*/
+ 109   2                                      *(unsigned char*)CMenu_GetMenuItemPtr()->m_pdata = menuDC.cValue;
+ 110   2                              CMsgPr_ParentMessage(CValueObject_Proc,WM_KEY_SET);     /*基类初始化消息*/
+ 111   2                              break;
+ 112   2                      case WM_KEY_ADD:        /*加按键消息*/
+ 113   2                              #if SMENU_01_CURSOR==1
+ 114   2                              menuDC.cValue+=CursorIncr[menuDC.cursorIndex];
+ 115   2                              #else
+                                      ++menuDC.cValue;
+C51 COMPILER V9.01   MENU_03                                                               04/15/2014 19:47:48 PAGE 3   
+
+                                      #endif
+ 118   2                              CMenu_SetValueLimit();                          //限幅处理
+ 119   2                              CMsgPr_PollMessage(WM_PAINT);   /*投递显示消息*/
+ 120   2                              break;
+ 121   2                      case WM_KEY_SUB:        /*减按键消息*/
+ 122   2                              #if SMENU_01_CURSOR==1
+ 123   2                              menuDC.cValue-=CursorIncr[menuDC.cursorIndex];
+ 124   2                              #else
+                                      --menuDC.cValue;
+                                      #endif
+ 127   2                              CMenu_SetValueLimit();                          //限幅处理
+ 128   2                              CMsgPr_PollMessage(WM_PAINT);   /*投递显示消息*/
+ 129   2                              break;
+ 130   2                      //left 
+ 131   2                      #if SMENU_01_CURSOR==1
+ 132   2                      case WM_KEY_LEFT:
+ 133   2                              //调整位循环
+ 134   2                              #if SMENU_01_DIG_LOOP==0        //打开调整位循环
+                                      if (menuDC.cursorIndex<(CURSOR_NUMBER-1)) {++menuDC.cursorIndex;}
+                                      #else                                           //关闭调整位循环
+ 137   2                              if (++menuDC.cursorIndex>(CURSOR_NUMBER-1)) {menuDC.cursorIndex = 0;}
+ 138   2                              #endif
+ 139   2                              break;
+ 140   2                      case WM_KEY_RIGHT:
+ 141   2                              //调整位循环
+ 142   2                              #if SMENU_01_DIG_LOOP==0        //打开调整位循环
+                                      if (menuDC.cursorIndex>0){--menuDC.cursorIndex;}
+                                      #else                                           //关闭调整位循环
+ 145   2                              if (!menuDC.cursorIndex){menuDC.cursorIndex=(CURSOR_NUMBER-1);}
+ 146   2                              else {--menuDC.cursorIndex;}
+ 147   2                              #endif
+ 148   2                              break;
+ 149   2                      //定时器消息
+ 150   2                      case WM_TIMER:
+ 151   2                              if (MENU_CURSOR_SHOW==CMenu_GetCursorState())
+ 152   2                              {
+ 153   3                                      CMenu_DrawMenuValue(SMENU_VALUE_POSIT,menuDC.cursorIndex+1,menuDC.cValue);
+ 154   3                                      menuDC.cursorTimer=MENU_CURSOR_HIDE;
+ 155   3                              }
+ 156   2                              else
+ 157   2                              {
+ 158   3                                      segDisBuff[SMENU_VALUE_POSIT+CURSOR_NUMBER-1-menuDC.cursorIndex]=CURSOR_CHARACTER;
+ 159   3                                      menuDC.cursorTimer=MENU_CURSOR_SHOW;
+ 160   3                              }
+ 161   2                              break;
+ 162   2                      #endif
+ 163   2                      default:
+ 164   2                              CMsgPr_ParentMessage(CValueObject_Proc,amsg);/*未处理消息传给父类*/
+ 165   2                              break;
+ 166   2              }
+ 167   1      }
+ 168          
+ 169          #endif
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    499    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----       1
+   IDATA SIZE       =   ----    ----
+C51 COMPILER V9.01   MENU_03                                                               04/15/2014 19:47:48 PAGE 4   
+
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

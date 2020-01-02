@@ -1,0 +1,1 @@
+"src\key.c" BROWSE INCDIR(.\src;.\src\os) DEBUG OBJECTEXTEND PRINT(.\key.lst) OBJECT(key.obj)

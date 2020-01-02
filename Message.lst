@@ -1,0 +1,90 @@
+C51 COMPILER V9.01   MESSAGE                                                               04/15/2014 19:40:09 PAGE 1   
+
+
+C51 COMPILER V9.01, COMPILATION OF MODULE MESSAGE
+OBJECT MODULE PLACED IN Message.obj
+COMPILER INVOKED BY: E:\Program Files\Keil4\C51\BIN\C51.EXE src\Message.c BROWSE INCDIR(.\src;.\src\os) DEBUG OBJECTEXTE
+                    -ND PRINT(.\Message.lst) OBJECT(Message.obj)
+
+line level    source
+
+   1          /***********************************************************************************************
+   2          文件名  Message.c
+   3          日期    2014.02.16
+   4          作者    张诗星  陈东辉
+   5          文件说明        基本消息支持
+   6          修订说明:
+   7          
+   8          2014.02.16  张诗星 初始版本
+   9          2014.03.13      张诗星  修订消息传送方法，减少函数递归调用
+  10          ***********************************************************************************************/
+  11          
+  12          /*头文件--------------------------------------------------------------------------------------*/
+  13          #include "Message.h"
+  14          //#include ""
+  15          
+  16          /*全局变量------------------------------------------------------------------------------------*/
+  17          CMsgDC msgDC;           /*全局消息变量*/
+  18          
+  19          /*接口函数------------------------------------------------------------------------------------*/
+  20          
+  21          //从消息队列获取消息 并移除消息
+  22          unsigned char CMsgPr_GetMessage(void)
+  23          {
+  24   1              unsigned char amsg = msgDC.m_msg;
+  25   1              msgDC.m_msg = WM_NULL;                                  /*获取消息后清除该消息*/
+  26   1              return amsg;
+  27   1      }
+  28          //向自身派发消息 可防止函数递归调用
+  29          void CMsgPr_PollMessage(Msg aMsg)
+  30          {
+  31   1              msgDC.m_msgPrce = msgDC.m_theObject;    /*当前消息目标*/
+  32   1              //保存消息数据
+  33   1              msgDC.m_msg = aMsg;     
+  34   1      }
+  35          //向控件直接发送消息 将立即调用消息函数 多次调用将导致函数递归
+  36          void CMsgPr_SendMessage(MsgPrce pmsgPrce, Msg aMsg)
+  37          {
+  38   1              msgDC.m_theObject = pmsgPrce;           /*消息对象*/
+  39   1              msgDC.m_msgPrce = pmsgPrce;                     /*当前消息目标*/
+  40   1      
+  41   1              //保存消息数据
+  42   1              msgDC.m_msg = aMsg;                                     /*消息*/
+  43   1              //循环调用消息例程
+  44   1              while (1)
+  45   1              {
+  46   2                      if ((0==msgDC.m_msgPrce)||              /*消息目标有效 并且消息有效*/
+  47   2                              (WM_NULL==msgDC.m_msg))
+  48   2                              break;
+  49   2                      msgDC.m_msgPrce();      /*调用消息例程*/
+  50   2              }
+  51   1      }
+  52          //父类消息处理
+  53          void CMsgPr_ParentMessage(MsgPrce pmsgPrce, Msg aMsg)
+  54          {
+C51 COMPILER V9.01   MESSAGE                                                               04/15/2014 19:40:09 PAGE 2   
+
+  55   1              msgDC.m_msg = aMsg;     
+  56   1              msgDC.m_msgPrce = pmsgPrce;
+  57   1      }
+  58          //结束消息传递
+  59          void CMsgPr_EndMessage(void)
+  60          {
+  61   1              msgDC.m_msgPrce = 0;                    /*结束消息传递*/
+  62   1              msgDC.m_msg = WM_NULL;
+  63   1      }
+  64          
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     76    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =      7    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

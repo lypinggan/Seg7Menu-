@@ -1,0 +1,62 @@
+C51 COMPILER V9.01   SEGDYNAMICSCAN                                                        04/15/2014 19:40:09 PAGE 1   
+
+
+C51 COMPILER V9.01, COMPILATION OF MODULE SEGDYNAMICSCAN
+OBJECT MODULE PLACED IN SegDynamicScan.obj
+COMPILER INVOKED BY: E:\Program Files\Keil4\C51\BIN\C51.EXE src\SegDynamicScan.c BROWSE INCDIR(.\src;.\src\os) DEBUG OBJ
+                    -ECTEXTEND PRINT(.\SegDynamicScan.lst) OBJECT(SegDynamicScan.obj)
+
+line level    source
+
+   1          /***********************************************************************************************
+   2          文件名  SegDynamicScan.c
+   3          日期    2014.4.13
+   4          作者    张诗星  陈东辉
+   5          修订    2014.4.13
+   6          文件说明        LED数码管动态扫描支持
+   7          修订说明        初始版本
+   8          2014.04.13      张诗星  初始版本
+   9          ***********************************************************************************************/
+  10          /*头文件--------------------------------------------------------------------------------------*/
+  11          #include "Seg7Font.h"
+  12          #include "SegDynamicScan.h"
+  13          
+  14          //#include ""
+  15          
+  16          
+  17          /*全局变量------------------------------------------------------------------------------------*/
+  18          //显示缓冲区
+  19          unsigned char segDisBuff[SEG_DIGIT_NUM];
+  20          
+  21          code const unsigned char SegDigCode[]=
+  22          {SEG7_CODE_0,SEG7_CODE_1,SEG7_CODE_2,SEG7_CODE_3,SEG7_CODE_4,
+  23          SEG7_CODE_5,SEG7_CODE_6,SEG7_CODE_7,SEG7_CODE_8,SEG7_CODE_9};
+  24          /*接口函数------------------------------------------------------------------------------------*/
+  25          
+  26          //用户接口
+  27          void SegDynamicScan(void)
+  28          {
+  29   1              static unsigned char scanIndex=0;               
+  30   1      
+  31   1              //消隐
+  32   1              SegDyn_Hidden();
+  33   1              //输出数据
+  34   1              SegDyn_OutputData(scanIndex);
+  35   1      
+  36   1              if (++scanIndex>(SEG_DIGIT_NUM-1))
+  37   1                      scanIndex=0;
+  38   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     40    ----
+   CONSTANT SIZE    =     10    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =      9    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)
